@@ -27,9 +27,9 @@ def generarFantasmas():
 
 generarFantasmas()
 def imprimirTablero():
-    tablero[pacman[0]][pacman[1]]="P"
+    tablero[pacman[0]][pacman[1]]="🟡"
     for i in range(len(fantasma)):
-        tablero[fantasma[i][0]][fantasma[i][1]]="F"
+        tablero[fantasma[i][0]][fantasma[i][1]]="👻"
     for x in range(8):
         print(tablero[x])
     tablero[pacman[0]][pacman[1]]="_"
