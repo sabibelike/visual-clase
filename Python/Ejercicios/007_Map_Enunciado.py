@@ -61,7 +61,10 @@ print(list(map(eliminarVocal, lista_original)))
 # Ejercicio 11
 #11. Dada una lista de estudiantes con sus calificaciones, calcular el promedio de cada estudiante y almacenar los resultados en un diccionario:
 estudiantes_calificaciones = {'Juan': [85, 90, 95], 'María': [78, 82, 80], 'Pedro': [90, 92, 88]}
-#print(list(map(lambda x : (x[0]+x[1]+x[2])/3, estudiantes_calificaciones.values())))
+promedios = list(map(lambda x : (x[0]+x[1]+x[2])/3, estudiantes_calificaciones.values()))
+promedio_alumnos = dict(map(lambda x,y : (x,y), estudiantes_calificaciones.keys(), promedios))
+print("El promedio de los alumnos es: "+str(promedio_alumnos))
+
 
 # Ejercicio 12
 #12. En una lista de nombres, eliminar los nombres que contienen menos de 5 caracteres, convertir los restantes a minúsculas y ordenarlos alfabéticamente:
@@ -86,7 +89,11 @@ lista_numeros = [10, 20, 30, 40, 50]
 # Ejercicio 15
 #15. En una lista de palabras, eliminar las palabras que contienen la letra 'a', convertir las restantes a mayúsculas y ordenarlas alfabéticamente:
 lista_palabras = ['apple', 'banana', 'orange', 'grape', 'kiwi', 'pear']
-#hacer despues
+def palabraA(x):
+    if "a" not in x:
+        return str.upper(x)
+print(list(filter(palabraA, lista_palabras)))
+
 
 # Ejercicio 16
 #16. Dada una lista de tuplas con nombres y edades, calcular la edad promedio y almacenar los resultados en un diccionario:
@@ -106,7 +113,8 @@ print(list(map(contarPalabras, lista_oraciones)))
 # Ejercicio 18
 #18. En un diccionario que contiene nombres de estudiantes como claves y listas de calificaciones como valores, calcular la calificación más alta de cada estudiante y almacenar los resultados en un nuevo diccionario:
 estudiantesCalificaciones = {'Juan': [85, 90, 95], 'María': [78, 82, 80], 'Pedro': [90, 92, 88]}
-
+maxCalificacion = list(filter(lambda x : max(x), estudiantes_calificaciones.values()))
+print(maxCalificacion)
 # Ejercicio 19
 #19. Dada una lista de números, calcular el logaritmo natural de cada número y almacenar los resultados en una lista:
 import math

@@ -6,45 +6,52 @@ print(list(map(lambda x : x*3,lista_original)))
 # Ejercicio 2
 # 2. Filtrar los números pares de una lista:
 lista_numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+print(list(filter(lambda x : x%2==0, lista_numeros)))
 
 # Ejercicio 3
 # 3. Sumar todos los elementos de una lista:
 from functools import reduce
 lista_numeros = [1, 2, 3, 4, 5]
-
-
+print(reduce(lambda x,y : x+y, lista_numeros))
+#por que no necesita ser pasado a lista???
 # Ejercicio 4
 # 4. Filtrar los números mayores que 10 y multiplicarlos por 2:
 lista_numeros = [5, 10, 15, 20, 25]
-
+filtrados = list(filter(lambda x : x>=10, lista_numeros))
+print(list(map(lambda x : x*2, filtrados)))
 
 # Ejercicio 5
 # 5. Filtrar las palabras que tienen más de 5 letras en una lista de palabras:
 lista_palabras = ["python", "programacion", "aprendizaje", "desarrollo", "informatica"]
+print(list(filter(lambda x : len(x)>6, lista_palabras)))
 
 # Ejercicio 6
 # 6. Calcular el producto de todos los elementos de una lista:
-
 lista_numeros = [1, 2, 3, 4, 5]
+#???????
 
 # Ejercicio 7
 # 7. Convertir todas las palabras en una lista a mayúsculas:
-
 lista_palabras = ["hola", "python", "mundo", "programacion"]
+print(list(map(lambda x : str.upper(x), lista_palabras)))
 
-
+import math
 # Ejercicio 8
 # 8. Filtrar los números impares y elevarlos al cuadrado:
 lista_numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
+filtra = list(filter(lambda x : x%2!=0, lista_numeros))
+print("Numeros filtrados y elevados",list(map(lambda x : math.pow(x,2), filtra)))
 
 # Ejercicio 9
 # 9. Concatenar todas las palabras de una lista separadas por un guión:
 lista_palabras = ["hola", "python", "mundo"]
+print(list(reduce(lambda x,y : x+"-"+y, lista_palabras)))
+
 
 # Ejercicio 10
 # 10. Filtrar los elementos de una lista que son cadenas de texto:
 lista_mixta = [1, "python", 3.5, "programacion", True, "aprendizaje"]
+
 
 # Ejercicio 11
 # 11. Multiplicar los elementos de dos listas elemento por elemento:
