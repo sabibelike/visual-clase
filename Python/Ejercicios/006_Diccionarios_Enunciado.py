@@ -4,17 +4,36 @@ y sus notas finales.
 Luego, agregar funcionalidad para cambiar la nota de un estudiante y 
 mostrar la nota modificada.
 """
+def notasFinales(notaFinal, nombre, nota):
+    if nombre in notaFinal:
+        print("Bro yasta")
+    else:
+        notaFinal[nombre] = nota
+def cambiarNota(notaFinal, nombre, nota):
+    notaFinal[nombre] = nota
+notaFinal = {}
+notasFinales(notaFinal, "Andrea",10)
+notasFinales(notaFinal, "Luis",10)
+notasFinales(notaFinal, "David",10)
+notasFinales(notaFinal, "Deyby", 5)
+cambiarNota(notaFinal, "Deyby",6)
 
 """
 Ejercicio 2: Dado un diccionario con nombres de empleados y su salario,
 calcular el salario medio, el salario más alto y el más bajo.
 """
+from functools import reduce
+salarios = {"Andrea":5000, "Luis":4000,"David":4200}
+salarioMedio = reduce(lambda x,y : x+y, salarios.values())
+print(salarioMedio/len(salarios))
 
 """
 Ejercicio 3: Crear un programa que cuente la frecuencia de las
 palabras de una frase dada por el usuario y almacene los resultados
 en un diccionario.
 """
+palabras = 
+
 
 """
 Ejercicio 4: Dado un diccionario que almacena las preferencias

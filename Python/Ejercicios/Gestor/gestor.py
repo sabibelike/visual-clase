@@ -27,42 +27,50 @@ eliminar
 ver todas las tareas pendientes
 '''
 class Tarea:
-    def __init__(self, id, descripcion, fecha):
-        self.id = id
+    def __init__(self, descripcion):
         self.descripcion = descripcion
         self.estado = "Pendiente"
-        self.fecha = fecha
         
-    def cambiarEstado(self, nuevoEstado, nuevaFecha):
+    def cambiarEstado(self, nuevoEstado):
         self.estado = nuevoEstado
-        self.fecha = nuevaFecha
-
-class Gestor(Tarea):
-    def __init__(self, id, descripcion):
-        super().__init__(id, descripcion)
-        self.listaTarea = []
+    
+    def getEstado(self):
+        print(self.estado)
+    
+    def getDescripcion(self):
+        print(self.descripcion)
+    
+    def mostrarInfo(self):
+        print("Descripcion:",self.descripcion,"estado:",self.estado)
+        
+'''     
+class Gestor:
+    def __init__(self):
+        self.listaTareas = []
         
     def agregarTarea(self, Tarea):
-        self.listaTarea.append(Tarea)
+        if Tarea in self.listaTareas:
+            print("Ya esta dentro bro")
+        else:
+            self.listaTareas.append(Tarea)
     
     def eliminarTarea(self, Tarea):
-        if Tarea in self.listaTarea:
-            self.listaTarea.remove(Tarea)
-        else: 
-            print("Papito no existe esa tarea")
-    
+        if Tarea in self.listaTareas:
+            self.listaTareas.remove(Tarea)
+        else:
+            print("Mi loco, esa tarea ya no ta aqui")
+            
     def mostrarTareas(self):
-        listado = self.listaTarea
-        for x in range listado:
-            print(x)
+       print(list(map(Tarea.mostrarInfo(), self.listaTareas)))
+ '''         
 
-tarea1 = Tarea(1, "Hacer la cama", None)
-tarea2 = Tarea(2, "Llamar cita", None)
-tarea3 = Tarea(3, "Ah mamar", None)
+listaTareas = []
+        
+tarea1 = Tarea("Hacer la cama")
+tarea2 = Tarea("No se")
+tarea3 = Tarea("Estudia malparia")
 
-gestoria = Gestor
-gestoria.agregarTarea(tarea1)
-gestoria.agregarTarea(tarea2)
-gestoria.agregarTarea(tarea3)
-
-gestoria.mostrarTareas
+listaTareas.append(tarea1)
+listaTareas.append(tarea2)
+listaTareas.append(tarea3)
+print(list(map(Tarea.mostrarInfo, listaTareas)))

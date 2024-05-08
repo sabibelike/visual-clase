@@ -1,1 +1,49 @@
+'''
+Nos encargan realizar un documento xml sobre recetas de cocina. Debe tener la DTD interna y  2 ejemplos de 2 recetas.
+Deben tener un identificador único. Nos facilitan la siguiente información: el plato 
+(por ejemplo, tortilla de patatas) debe estar categorizado como entrante, primero, segundo o postre. Debemos 
+indicar todos sus ingredientes con la cantidad y unidad de medida (por ejemplo, cebolla, 200 gramos). 
+La unidad de medida debe ser kilogramos, gramos, litros o centilitros. Debe incluir los pasos de la preparación 
+con la descripción de los mismos (por ejemplo, freír las patatas). Debe aparecer el tiempo de preparación expresado 
+en minutos y la dificultad de cocinado que será baja, media o alta. 
+De igual forma, necesitamos reflejar las calorías,  que siempre serán con respecto a 100 gramos de producto.
+Nota: categoria, cantidad,  unidad, dificultad y tiempo deben ser atributos.
+
+Todo es obligatorio.
+receta - id categoria,
+nombre,  
+'''
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE recetas[
+	<!ELEMENT recetas (recetas+)>
+		<!ELEMENT receta (idReceta, nombre, categoria, ingrediente+, preparacion, tiempo_preparacion, dificultad, calorias)>
+		<!ATTLIST receta idReceta ID #REQUIRED tiempo_preparacion CDATA #REQUIRED dificultad (baja | media | dificil) "baja">
+			<!ELEMENT nombre (#PCDATA)>
+			<!ELEMENT categoria (entrante | primero | segundo | postre)>
+			<!ELEMENT ingredientes (ingrediente+)>
+				<!ELEMENT ingrediente (#PCDATA)>
+				<!ATTLIST ingrediente cantidad CDATA #REQUIRED >
+				<!ATTLIST ingrediente unidad (kilogramos | gramos | litros | centilitros) #REQUIRED>
+			<!ELEMENT preparacion (paso+)>
+			<!ELEMENT paso (#PCDATA)>
+			<!ELEMENT calorias (#PCDATA)>
+]>
+<recetas>
+	<receta idReceta = "id_001" tiempo_preparacion = "30 minutos" dificultad = "baja" >
+		<nombre>Tortilla de patatas</nombre>
+		<categoria>Entrante</categoria>
+		<ingredientes>
+			<ingrediente cantidad="5" unidad="kg">Papa</ingrediente>
+			<ingrediente cantidad="10" unidad="gramos">Huevo</ingrediente>
+			<ingrediente cantidad="500" unidad="gramos">Cebolla</ingrediente>
+		</ingredientes>
+		<preparacion>
+			<paso num_paso="1">Pochar papa</paso>
+			<paso num_paso="2">Agregar cebolla</paso>
+			<paso num_paso="3">Agregar huevo batido</paso>
+			<paso num_paso="4">Dejar cocinar</paso>
+			<paso num_paso="5">Darle vuelta</paso>
+		</preparacion>
+		<calorias>20</calorias>
+	</receta>
+</recetas>

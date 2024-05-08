@@ -7,7 +7,6 @@ Filtra aquellos datos que tengan pocas unidades(menos de 10).
 Quiero saber el total de ingresos de las ventas de estos productos
 '''
 
-
 # Lista de ventas donde cada tupla contiene el nombre del producto, cantidad vendida y precio unitario
 ventas = [("manzana", 30, 0.50), ("banana", 20, 0.75), ("naranja", 5, 1.00), ("pera", 8, 0.60), ("melon", 25, 3.00)]
 
@@ -45,21 +44,10 @@ calificaciones = {
     "Luis": [5.5, 6.0, 5.0]
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+promedios = dict(map(lambda item : (item[0], sum(item[1]) /len(item[1])), calificaciones.items()))
+estudiantesPromedios = dict(filter(lambda item : item[1]>6.0, promedios.items()))
+print(estudiantesPromedios)
+print("La cantidad de estudiantes que superan el promedio son:",len(estudiantesPromedios))
 
 # Calcular el promedio de calificaciones para cada estudiante utilizando map
 promedios = dict(map(lambda item: (item[0], sum(item[1]) / len(item[1])), calificaciones.items()))
@@ -89,6 +77,11 @@ personas = [
     {"nombre": "Lorena", "edad": 29, "ciudad": "Madrid"},
     {"nombre": "Jordi", "edad": 35, "ciudad": "Barcelona"}
 ]
+ciudadFiltrada = "Madrid"
+personasMadrid = list(filter(lambda x : x["ciudad"] == "Madrid", personas))
+edades = list(map(lambda x : x["edad"], personasMadrid))
+promedioEdad = reduce(lambda x,y : x+y /len(edades), edades,0)
+print("El promedio de edades es de:",promedioEdad)
 
 # Nombre de la ciudad a filtrar
 ciudad_filtrada = "Madrid"
@@ -118,7 +111,6 @@ El programa debe filtrar los comentarios que contengan al menos una palabra clav
 analizar el sentimiento general de los comentarios filtrados y calcular el porcentaje de comentarios negativos respecto al total de comentarios analizados.
 Crea una lista de palabras con comentarios positivos y comentarios negativos que te ayuden en el filtrado
 '''
-
 # Lista de comentarios de usuarios en una red social
 comentarios = [
     "Me encanta el nuevo diseño de la plataforma!",
@@ -127,8 +119,31 @@ comentarios = [
     "Odio la lentitud del sistema ahora.",
     "No estoy contento con el servicio de atención al cliente.",
     "¡Bravo por los esfuerzos!",
-    "El peor cambio que han hecho hasta ahora."
+    "¡El peor cambio que han hecho hasta ahora!"
 ]
+
+def filtroPalabras(x):
+    negativo = ["terrible","odio","peor","no"]
+    positivo = ["encanta","excelente", "bravo"]
+    frase = ""
+    for i in x:
+        if i == "¡":
+            continue
+        else:
+            frase += i
+        
+    frase1 = str.lower(frase).split(" ")
+    
+    for i in frase1:
+        if i in negativo:
+            return True
+        else:
+            False
+
+comentariosNegativos = list(filter(filtroPalabras, comentarios))
+print(comentariosNegativos)
+print("El porcentaje de comentarios negativos es de:",(len(comentariosNegativos)/len(comentarios))*100,"%")
+
 
 # Listas de palabras clave para identificar emociones
 palabras_positivas = ['encanta', 'excelente', 'bravo', 'bueno', 'genial']
@@ -154,9 +169,6 @@ else:
 print(f"Comentarios negativos: {comentarios_negativos}")
 print(f"Porcentaje de comentarios negativos: {porcentaje_negativos:.2f}%")
 
-
-
-
 '''
 Ejercicio 5
 Desarrolla un programa que maneje una lista de reservas de un hotel. 
@@ -173,6 +185,21 @@ reservas = [
     {"nombre": "Pedro", "noches": 6, "tipo_habitacion": "doble"},
     {"nombre": "Lucía", "noches": 3, "tipo_habitacion": "estándar"}
 ]
+
+reservasLargas = list(filter(lambda x : x["noches"]>5, reservas))
+noches = list(map(lambda x : x["noches"], reservas))
+totalNoches = reduce(lambda x,y : x+y, noches,0)
+
+tipoHabitacion = {}
+for reserva in reservasLargas:
+    tipo = reserva["tipo_habitacion"]
+    if tipo in tipoHabitacion:
+        tipoHabitacion[tipo] += 1
+    else:
+        tipoHabitacion[tipo] = 1
+        
+habitacionMasReservada = max(tipoHabitacion, key=tipoHabitacion.get)
+print("La habitacion mas reservada fue:",habitacionMasReservada)
 
 # Filtrar reservas que exceden 5 noches
 reservas_largas = list(filter(lambda reserva: reserva["noches"] > 5, reservas))

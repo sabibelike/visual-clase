@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE libreria[
+    <!ELEMENT libreria (libro+)>
+        <!ELEMENT libro (informacion, capitulos, personajes)>
+            <!ELEMENT informacion (nombre, genero+)>
+                <!ELEMENT nombre (#PCDATA)>
+                <!ELEMENT genero (#PCDATA)>
+            <!ELEMENT capitulos (capitulo+)>
+                <!ELEMENT capitulo (#PCDATA)>
+                    <!ATTLIST capitulo paginas CDATA #REQUIRED>
+                    <!ATTLIST capitulo descripcion CDATA #REQUIRED>
+            <!ELEMENT personajes (personaje+)>
+                <!ELEMENT personaje (#PCDATA)>
+                    <!ATTLIST personaje edad NMTOKEN #REQUIRED>
+]>
+<libreria>
+    <libro>
+        <informacion>
+            <nombre>El ocaso del mundo</nombre>
+            <genero>Trhiller fnatastico</genero>
+        </informacion>
+        <capitulos>
+            <capitulo paginas="32" descripcion="hakunammatatacada">El atardecer siniestro</capitulo>
+            <capitulo paginas="800" descripcion="el gran capitulo">Tiempos mejores</capitulo>
+            <capitulo paginas="2" descripcion="te sorprendera">El ocaso</capitulo>
+            <capitulo paginas="15" descripcion="ni fu ni fa">El caer del sol</capitulo>
+            <capitulo paginas="1" descripcion="el gran final">Tiembla</capitulo>
+        </capitulos>
+        <personajes>
+            <personaje edad="23">Pedro Gastón del Monte</personaje>
+            <personaje edad="51">Rosa Melano</personaje>
+            <personaje edad="32">Dolores Geni Tales</personaje>
+            <personaje edad="13">Tim el pequeño</personaje>
+            <personaje edad="44">Aitor Menta</personaje>
+            <personaje edad="27">Roberto Carlos Hue Vosbien</personaje>
+            <personaje edad="33">Ana Bohueles Rica</personaje>
+            <personaje edad="15">Rico Tilla</personaje>
+            <personaje edad="21">Andrea Angel Da silva Nieto</personaje>
+        </personajes>
+    </libro>
+</libreria>
